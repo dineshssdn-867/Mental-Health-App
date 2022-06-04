@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <h3>Please press the button to chat with us :<br><br>
+    <input id="room-name-submit" type="button" value="Start the chat">
+    </h3>
+    <script>
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            //var roomName = document.querySelector('#room-name-input').value;
+            var roomName = create_UUID();
+            window.location.pathname = 'chatbot'+ '/chat/' + roomName + '/';
+        };
+
+// to generate random url-----------------------------------------------------------------------------------------------
+        function create_UUID(){
+        var dt = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+        });
+        return uuid;
+        }
+
+        window.onload = function(){
+            document.getElementById('#room-name-submit').click();
+        }
+    </script>
+</body>
+</html>

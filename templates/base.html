@@ -1,0 +1,131 @@
+{% load pwa %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Mental Health Coach</title>
+	<meta charset="utf-8">
+	 {% progressive_web_app_meta %}
+	<link rel="shortcut icon" type="image/x-icon" href="http://newhopeforthebrain.com/wp-content/uploads/2019/01/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="This is a mental health app which is AI chatbot">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"> </head>
+
+<body>
+	<nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
+		<div class="container"> <a class="navbar-brand" href="{% url 'health:home' %}">Mental Health <span>coach<i class="fa fa-leaf"></i></span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars"></span> Menu </button>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="{% url 'health:home' %}" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="{% url 'AboutUs:aboutus' %}" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="{% url 'predictor:show_emotion' %}" class="nav-link">Mental Health Score</a></li>
+					<li class="nav-item"><a href="{% url 'contact:contact' %}" class="nav-link">Contact</a></li>
+					{% if user.is_authenticated %}
+					<li class="nav-item"><a href="#" class="nav-link"><span>Welcome {{user.username}}</span></a></li>
+					<li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link">Logout</a></li>
+					{% else %}
+					<li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link">Login</a></li>
+					<li class="nav-item"><a href="{% url 'users:register' %}" class="nav-link">SignUp</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END nav -->
+	{% block content %} {% endblock %}
+	<footer class="footer">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-10 col-lg-6">
+					<div class="subscribe mb-5">
+						<form action="#" class="subscribe-form">
+							<div class="form-group d-flex">
+								<input type="text" class="form-control rounded-left" placeholder="Enter email address">
+								<input type="submit" value="Subscribe" class="form-control submit px-3"> </div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-lg-5">
+					<div class="row">
+						<div class="col-md-12 col-lg-8 mb-md-0 mb-4">
+							<h2 class="footer-heading"><a class="navbar-brand" href="{% url 'health:home' %}">Mental Health <span><i class="fa fa-leaf">coach`</i></span></a></h2>
+							<p>We work to solve the mental health problems.</p> <a href="{% url 'AboutUs:aboutus' %}">read more <span class="ion-ios-arrow-round-forward"></span></a> </div>
+					</div>
+				</div>
+				<div class="col-md-8 col-lg-7">
+					<div class="row">
+						<div class="col-md-3 mb-md-0 mb-4 border-left">
+							<h2 class="footer-heading">Services</h2>
+							<ul class="list-unstyled">
+								<li><a href="https://zian.life/" class="py-1 d-block">Spirituality</a></li>
+								<li><a href="#" class="py-1 d-block">Physical Activity</a></li>
+								<li><a href="#" class="py-1 d-block">Fitness Program</a></li>
+								<li><a href="#" class="py-1 d-block">Healthy Food</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 mb-md-0 mb-4 border-left">
+							<h2 class="footer-heading">About</h2>
+							<ul class="list-unstyled">
+								<li><a href="#" class="py-1 d-block">Staff</a></li>
+								<li><a href="#" class="py-1 d-block">Team</a></li>
+								<li><a href="#" class="py-1 d-block">Careers</a></li>
+								<li><a href="#" class="py-1 d-block">Blog</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 mb-md-0 mb-4 border-left">
+							<h2 class="footer-heading">Social</h2>
+							<ul class="list-unstyled">
+								<li><a href="https://twitter.com/DineshNariani" class="py-1 d-block">Twitter</a></li>
+								<li><a href="#" class="py-1 d-block">Instagram</a></li>
+								<li><a href="#" class="py-1 d-block">Google</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-md-6 col-lg-4 text-md-right">
+
+				</div>
+				<div class="col-md-6 col-lg-4 text-md-right">
+					<p class="mb-0 list-unstyled"> <a class="mr-md-3" href="#">Terms</a> <a class="mr-md-3" href="#">Privacy</a> <a class="mr-md-3" href="#">Compliances</a> </p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+		</svg>
+	</div>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+	<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+	<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/scrollax.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
