@@ -1,4 +1,3 @@
-import re  # Importing re module for cleaning data
 from typing import Any, AnyStr  # Using to define the type
 from .api import analyze_emotion
 from django.contrib.auth.decorators import login_required  # Importing decorator for verifying the authenticated user
