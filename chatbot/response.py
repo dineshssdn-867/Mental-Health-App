@@ -1,37 +1,36 @@
 import pickle
+import spacy
 import re
 import nltk
 import pandas as pd
 from django.views.decorators.csrf import csrf_exempt
-from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 from textblob.sentiments import *
 
 
+nlp = spacy.load("en_core_web_md")
+df = pd.read_csv('model/cleaned_df.csv')
+qas = df['Questions'].to_list()
+
+
 def dr_response(req):
+    words = []
+    
     # Pre-processing
     req = re.sub(r'[^A-Za-z0-9\\s]', ' ', req.lower())
 
-    # Encode the text to get embeddings
-    model = SentenceTransformer('sentence-transformers/multi-qa-mpnet-base-cos-v1')
-    req_embeddings = model.encode(req).reshape(1, -1)
-
     # Compute similarity
-
-    qn_embeddings = pickle.load(open(r'model/stsb-embedding.pkl', 'rb'))
-    cosine_sim = cosine_similarity(qn_embeddings, req_embeddings)
-    cosine_sim = [(idx, item) for idx, item in enumerate(cosine_sim)]
-    sim_scores = sorted(cosine_sim, key=lambda x: x[1], reverse=True)
-
+    statement1 = nlp(req)
+    cosine_sim = [(statement1.similarity(nlp(item)), item) for item in qas]
+    cosine_sim.sort(key=lambda i:i[0],reverse=True)
+    
     # Return response of the top most similar question
-    top_score = sim_scores[0]
-    qn_indice = top_score[0]
-
-    df = pd.read_csv(r'model/cleaned_df.csv')
-
-    if top_score[1][0] > .70:
-        return df['Answers'].iloc[qn_indice]
+    top_score = cosine_sim[0][0]
+   
+    if top_score > .70:
+      response = df.loc[df['Questions'] == cosine_sim[0][1]]
+      return response.iloc[0]['Answers']
 
     return "Could you please elaborate your situation more? I don't really understand."
 
@@ -58,6 +57,8 @@ def get_bot_response(question):
         return "Hello! How may I help you today?"
     elif polarity > 0.7:
         return "That's great! Do you still have any questions for me?"
+    elif polarity < 0:
+        return "Please be polite we are sorry for any issues caused to you."
     elif cleanText in happy_emotions:
         return "That's great! Do you still have any questions for me?"
     elif cleanText in goodbyes:
