@@ -10,17 +10,17 @@ from django.urls import reverse  # Used in redirecting
 from django.views.generic import CreateView  # class based view
 from .forms import RegisterForm  # importing registration form
 from typing import Any, AnyStr, Dict  # Using to define the type
-
+from decouple import config
 
 firebaseConfig = {
-    'apiKey':  'AIzaSyDUqTzCE50UXv5K6N8WHWA_hgTfNdUrS3c',
-    'authDomain':  'talk-to-brain.firebaseapp.com',
-    "databaseURL":  'https://talk-to-brain-default-rtdb.asia-southeast1.firebasedatabase.app',
-    'projectId': 'talk-to-brain',
-    'storageBucket': 'talk-to-brain.appspot.com',
-    'messagingSenderId': '560400101460',
-    'appId': '1:560400101460:web:1568a907cfeadb16b97dc1',
-    'measurementId': 'G-7RZ87M8LTW',
+    'apiKey':  config('api_key'),
+    'authDomain':  config('authDomain'),
+    "databaseURL":  config('databaseURL'),
+    'projectId': config('projectId'),
+    'storageBucket': config('storageBucket'),
+    'messagingSenderId': config('messagingSenderId'),
+    'appId': config('appId'),
+    'measurementId': config('measurementId'),
 }
 
 firebase = pyrebase.initialize_app(firebaseConfig)  # setting the firebase config

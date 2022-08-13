@@ -108,10 +108,10 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'health',
-        'USER': 'postgres',
-        'PASSWORD': 'ssdn123!',
-        'HOST': 'localhost',
+        'NAME': 'd3hutuuv7dpaot',
+        'USER': 'lpsmqscngqggzj',
+        'PASSWORD': '4c0507e6a027c7d590fa393300e0ca601482675b4f40e838e52c1fa308b84103',
+        'HOST': 'ec2-44-195-100-240.compute-1.amazonaws.com',
         'PORT': '5432',
     },
     'contact':  {
@@ -162,7 +162,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = 'https://mental-health-4a7c7.web.app/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )

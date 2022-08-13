@@ -88,62 +88,6 @@
   {{ room_name|json_script:"room-name" }}
 
   <script>
-    function myFunction1(question_id)
-    {
-        console.log(roomName);
-
-            $.ajax(
-                {
-                url:
-                'http://127.0.0.1:8000/chat/'
-                + roomName
-                + '/',
-                data : {
-                    'flag': "satisfied",
-                    'qid':question_id,
-                },
-                success: function (data) {
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown){
-                    alert("Failure: " + errorThrown);
-                }
-            });
-
-    }
-
-
-    function myFunction2(question_id)
-    {
-        $(document).ready(function(){
-            $("#chat-log").append('<li class="contact"><b>Contact Us : 7986541230<br/><a href="https://pict.edu/about-us/contact-us/">PICT Contact Us</a><b></li>');
-        });
-
-        console.log(question_id);
-        var result = question_id.split(",");
-        qid=result[0]
-        user_asked=result[1]
-
-            $.ajax(
-                {
-                url:
-                'http://127.0.0.1:8000/chat/'
-                + roomName
-                + '/',
-                data : {
-                    'flag': "unsatisfied",
-                    'qid':qid,
-                    'userQ':user_asked
-                },
-                success: function (data) {
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown){
-                    alert("Failure: " + errorThrown);
-                }
-            });
-
-    }
-
-
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         var flag = 0;
@@ -151,7 +95,7 @@
         var user = "User";
 
         const chatSocket = new WebSocket(
-            'ws://'
+            'wss://'
             + window.location.host
             + '/ws/chat/'
             + roomName
@@ -181,8 +125,8 @@
 
             if(ans != ' ' && ans != '\n' && ans.length != 0 )
                 $('<li class="sent"><img src="{% static "assets/chatbot_icon.jpg" %}" alt="" /><p>' + ans + ' </p>\
-                    <br><button name="'+ans_id+'" onclick="myFunction1(this.name)"> Satisfied</button>\
-                    <button name="'+ans_id+","+q_asked+'" onclick="myFunction2(this.name)"> Unsatisfied</button></li>').appendTo($('.messages ul'));
+                    <br><button name="'+ans_id+'" onclick="myFunction1(this.name)"> </button>\
+                    <button name="'+ans_id+","+q_asked+'" onclick="myFunction2(this.name)"> </button></li>').appendTo($('.messages ul'));
 
         };
 
