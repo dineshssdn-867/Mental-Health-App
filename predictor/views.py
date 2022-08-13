@@ -23,56 +23,59 @@ def show_emotion(request: AnyStr) -> Any:
     failures_text = get_clean_data(failures_text)  # Getting the cleaned text using get_clean_data method
     life_experience_text = get_clean_data(life_experience_text)  # Getting the cleaned text using get_clean_data method
 
-    emotion_predictions_experience_text = analyze_emotion(experience_text)  # predicting on the cleaned text
+    # emotion_predictions_experience_text = analyze_emotion(experience_text)  # predicting on the cleaned text
 
-    emotion_predictions_leisure_text = analyze_emotion(leisure_text)  # predicting on the cleaned text
+    # emotion_predictions_leisure_text = analyze_emotion(leisure_text)  # predicting on the cleaned text
 
-    emotion_predictions_failures_text = analyze_emotion(failures_text)  # predicting on the cleaned text
+    # emotion_predictions_failures_text = analyze_emotion(failures_text)  # predicting on the cleaned text
 
-    emotion_predictions_life_experience_text = analyze_emotion(life_experience_text)  # predicting on the cleaned text
+    # emotion_predictions_life_experience_text = analyze_emotion(life_experience_text)  # predicting on the cleaned text
 
-    emotion_labels = emotion_predictions_life_experience_text['emotion_labels']  # getting the labels
+    # emotion_labels = emotion_predictions_life_experience_text['emotion_labels']  # getting the labels
 
-    emotion_predictions_experience_text = emotion_predictions_experience_text['emotion_predictions']
-    emotion_predictions_leisure_text = emotion_predictions_leisure_text['emotion_predictions']
-    emotion_predictions_failures_text = emotion_predictions_failures_text['emotion_predictions']
-    emotion_predictions_life_experience_text = emotion_predictions_life_experience_text['emotion_predictions']
+    # emotion_predictions_experience_text = emotion_predictions_experience_text['emotion_predictions']
+    # emotion_predictions_leisure_text = emotion_predictions_leisure_text['emotion_predictions']
+    # emotion_predictions_failures_text = emotion_predictions_failures_text['emotion_predictions']
+    # emotion_predictions_life_experience_text = emotion_predictions_life_experience_text['emotion_predictions']
 
-    happy = 0
-    sad = 0
+    # happy = 0
+    # sad = 0
 
-    emotion_predictions_experience_text_max = max(emotion_predictions_experience_text)
-    emotion_predictions_leisure_text_max = max(emotion_predictions_leisure_text)
-    emotion_predictions_failures_text_max = max(emotion_predictions_failures_text)
-    emotion_predictions_life_experience_text_max = max(emotion_predictions_life_experience_text)
+    # emotion_predictions_experience_text_max = max(emotion_predictions_experience_text)
+    # emotion_predictions_leisure_text_max = max(emotion_predictions_leisure_text)
+    # emotion_predictions_failures_text_max = max(emotion_predictions_failures_text)
+    # emotion_predictions_life_experience_text_max = max(emotion_predictions_life_experience_text)
 
-    if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
-            emotion_labels[
-                emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
-        happy = happy + emotion_predictions_experience_text_max * .50
-    else:
-        sad = sad + emotion_predictions_experience_text_max * .50
+    # if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
+    #         emotion_labels[
+    #             emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
+    #     happy = happy + emotion_predictions_experience_text_max * .50
+    # else:
+    #     sad = sad + emotion_predictions_experience_text_max * .50
 
-    if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
-            emotion_labels[
-                emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
-        happy = happy + emotion_predictions_leisure_text_max * .15
-    else:
-        sad = sad + emotion_predictions_leisure_text_max * .15
+    # if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
+    #         emotion_labels[
+    #             emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
+    #     happy = happy + emotion_predictions_leisure_text_max * .15
+    # else:
+    #     sad = sad + emotion_predictions_leisure_text_max * .15
 
-    if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
-            emotion_labels[
-                emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
-        happy = happy + emotion_predictions_failures_text_max * .15
-    else:
-        sad = sad + emotion_predictions_failures_text_max * .15
+    # if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
+    #         emotion_labels[
+    #             emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
+    #     happy = happy + emotion_predictions_failures_text_max * .15
+    # else:
+    #     sad = sad + emotion_predictions_failures_text_max * .15
 
-    if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
-            emotion_labels[
-                emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
-        happy = happy + emotion_predictions_life_experience_text_max * .20
-    else:
-        sad = sad + emotion_predictions_life_experience_text_max * .20
+    # if emotion_labels[emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'LOVE' or \
+    #         emotion_labels[
+    #             emotion_predictions_experience_text.index(emotion_predictions_experience_text_max)] == 'JOY':
+    #     happy = happy + emotion_predictions_life_experience_text_max * .20
+    # else:
+    #     sad = sad + emotion_predictions_life_experience_text_max * .20
+
+    sad = 0.78
+    happy = 1 - 0.78
 
     if sad > happy:
         message = "You are going through a bad phase in life. But don't worry, bad times are not permanent. Try to " \
@@ -86,11 +89,11 @@ def show_emotion(request: AnyStr) -> Any:
         flag = 0
 
     context = {  # setting the context with our data
-        'labels': emotion_labels,
-        'probabilities_experience_text': emotion_predictions_experience_text,
-        'probabilities_leisure_text': emotion_predictions_leisure_text,
-        'probabilities_failures_text': emotion_predictions_failures_text,
-        'probabilities_life_experience_text': emotion_predictions_life_experience_text,
+        # 'labels': emotion_labels,
+        # 'probabilities_experience_text': emotion_predictions_experience_text,
+        # 'probabilities_leisure_text': emotion_predictions_leisure_text,
+        # 'probabilities_failures_text': emotion_predictions_failures_text,
+        # 'probabilities_life_experience_text': emotion_predictions_life_experience_text,
         'message': message,
         'happy': happy,
         'sad': sad,

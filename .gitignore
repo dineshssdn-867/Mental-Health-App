@@ -42,7 +42,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-static
 
 
 # PyInstaller
@@ -146,8 +145,7 @@ dmypy.json
 .pyre/
 
 # pytype static type analyzer
-.pytype/
-static 
+.pytype/ 
 
 # Cython debug symbols
 cython_debug/
