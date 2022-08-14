@@ -11,390 +11,390 @@
 </section>
 <br><br><br>
 <section class="ftco-section">        <div class="container">
-               <div class="row">
-                   <div class="col-sm-12 col-md-6">
-                         <div class="text-center">
-                             <h4 align="center">Emotion Analysis at workplace</h4>
-                             <canvas id="myChart1" width="300" height="200"></canvas>
-                         </div>
-                    </div>
-                   <div class="col-sm-12 col-md-6">
-                         <div class="text-center">
-                            <h4 align="center">Emotion Analysis after leisure time</h4>
-                            <canvas id="myChart2" width="300" height="200"></canvas>
-                         </div>
-                    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+              <div class="text-center">
+                  <h4 align="center">Emotion Analysis about current life status</h4>
+                  <canvas id="myChart1" width="300" height="200"></canvas>
               </div>
-              <br>
-               <div class="row">
-                   <div class="col-sm-12 col-md-6">
-                         <div class="text-center">
-                             <h4 align="center">Emotion Analysis after failures</h4>
-                             <canvas id="myChart3" width="300" height="200"></canvas>
-                         </div>
-                    </div>
-                   <div class="col-sm-12 col-md-6">
-                         <div class="text-center">
-                            <h4 align="center">Emotion Analysis of life experience</h4>
-                            <canvas id="myChart4" width="300" height="200"></canvas>
-                         </div>
-                    </div>
+         </div>
+        <div class="col-sm-12 col-md-6">
+              <div class="text-center">
+                 <h4 align="center">Emotion Analysis about work experience</h4>
+                 <canvas id="myChart2" width="300" height="200"></canvas>
               </div>
-              <br>
-              <br>
-              <div class="row">
-                   <div class="col-sm-12 col-md-12">
-                         <div class="text-center">
-                             <h4 align="center">Final Analysis</h4>
-                             <canvas id="myChart5" width="300" height="200"></canvas>
-                             <br>
-                             <h4>{{message}}</h4>
-                             {% if flag %}
-                             <a href="https://www.google.com/maps/search/Psychiatrist+near+me/" class="btn btn-primary">Find Psychiatrist</a>
-                             {% endif %}
-                         </div>
-                    </div>
+         </div>
+   </div>
+   <br>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+              <div class="text-center">
+                  <h4 align="center">Emotion Analysis about family meet</h4>
+                  <canvas id="myChart3" width="300" height="200"></canvas>
               </div>
-        </div>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js"></script>
-            <div class="col-md-6 my-4">
-        <div class="">
-            <div class="card-body">
-                <script>
-                    var ctx = document.getElementById('myChart1').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: [{% for label in labels %} '{{label}}',{% endfor %}],
-                    datasets: [{
-                        label: 'Emotion',
-                        data: [{% for prob in probabilities_experience_text %} {{ prob }}, {% endfor %}],
-                          options: {
-                            plugins: {
-                              legend: {
-                                title: {
-                                  display: true,
-                                  text: 'Legend Title',
-                                }
-                              }
-                            }
-                          },
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                                borderWidth: 1
-                    }]
-                        },
-                    options: {
-                        plugins: {
-                            legend: {
-                                title: {
-                                    display: true,
-                                    text: 'Emotion Analysis of work experience',
-                                }
-                            }
-                        },
-                        scales: {
-                            yAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'probability'
-                                 },
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'Emotion'
-                                 }
-                            }],
-                        }
-                    }
-                    });
+         </div>
+        <div class="col-sm-12 col-md-6">
+              <div class="text-center">
+                 <h4 align="center">Emotion Analysis about feeling down in life</h4>
+                 <canvas id="myChart4" width="300" height="200"></canvas>
+              </div>
+         </div>
+   </div>
+   <br>
+   <br>
+   <div class="row">
+        <div class="col-sm-12 col-md-12">
+              <div class="text-center">
+                  <h4 align="center">Final Analysis</h4>
+                  <canvas id="myChart5" width="300" height="200"></canvas>
+                  <br>
+                  <h4>{{message}}</h4>
+                  {% if flag %}
+                  <a href="https://www.google.com/maps/search/Psychiatrist+near+me/" class="btn btn-primary">Find Psychiatrist</a>
+                  {% endif %}
+              </div>
+         </div>
+   </div>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js"></script>
+ <div class="col-md-6 my-4">
+<div class="bg-white">
+ <div class="card-body">
+     <script>
+         var ctx = document.getElementById('myChart1').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [{% for label in labels %} '{{label}}',{% endfor %}],
+         datasets: [{
+             label: 'Emotion',
+             data: [{% for prob in probabilities_experience_text %} {{ prob }}, {% endfor %}],
+               options: {
+                 plugins: {
+                   legend: {
+                     title: {
+                       display: true,
+                       text: 'Legend Title',
+                     }
+                   }
+                 }
+               },
+             backgroundColor: [
+                 'rgba(255, 99, 132, 1)',
+                 'rgba(54, 162, 235, 1)',
+                 'rgba(255, 206, 86, 1)',
+                 'rgba(75, 192, 192, 1)',
+                 'rgba(153, 102, 255, 1)',
+                 'rgba(255, 159, 64, 1)'
+             ],
+                 borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
+                     'rgba(255, 159, 64, 1)'
+                 ],
+                     borderWidth: 1
+         }]
+             },
+         options: {
+             plugins: {
+                 legend: {
+                     title: {
+                         display: true,
+                         text: 'Emotion Analysis about current life status',
+                     }
+                 }
+             },
+             scales: {
+                 yAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'probability'
+                      },
+                     ticks: {
+                         beginAtZero: true
+                     }
+                 }],
+                 xAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'Emotion'
+                      }
+                 }],
+             }
+         }
+         });
 
-                    var ctx = document.getElementById('myChart2').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: [{% for label in labels %} '{{label}}',{% endfor %}],
-                    datasets: [{
-                        label: 'Emotion',
-                        data: [{% for prob in probabilities_leisure_text %} {{ prob }}, {% endfor %}],
-                          options: {
-                            plugins: {
-                              legend: {
-                                title: {
-                                  display: true,
-                                  text: 'Legend Title',
-                                }
-                              }
-                            }
-                          },
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                                borderWidth: 1
-                    }]
-                        },
-                    options: {
-                        plugins: {
-                            legend: {
-                                title: {
-                                    display: true,
-                                    text: 'Emotion Analysis of leisure time',
-                                }
-                            }
-                        },
-                        scales: {
-                            yAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'probability'
-                                 },
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'Emotion'
-                                 }
-                            }],
-                        }
-                    }
-                    });
+         var ctx = document.getElementById('myChart2').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [{% for label in labels %} '{{label}}',{% endfor %}],
+         datasets: [{
+             label: 'Emotion',
+             data: [{% for prob in probabilities_leisure_text %} {{ prob }}, {% endfor %}],
+               options: {
+                 plugins: {
+                   legend: {
+                     title: {
+                       display: true,
+                       text: 'Legend Title',
+                     }
+                   }
+                 }
+               },
+             backgroundColor: [
+                 'rgba(255, 99, 132, 1)',
+                 'rgba(54, 162, 235, 1)',
+                 'rgba(255, 206, 86, 1)',
+                 'rgba(75, 192, 192, 1)',
+                 'rgba(153, 102, 255, 1)',
+                 'rgba(255, 159, 64, 1)'
+             ],
+                 borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
+                     'rgba(255, 159, 64, 1)'
+                 ],
+                     borderWidth: 1
+         }]
+             },
+         options: {
+             plugins: {
+                 legend: {
+                     title: {
+                         display: true,
+                         text: 'Emotion Analysis about work experience',
+                     }
+                 }
+             },
+             scales: {
+                 yAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'probability'
+                      },
+                     ticks: {
+                         beginAtZero: true
+                     }
+                 }],
+                 xAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'Emotion'
+                      }
+                 }],
+             }
+         }
+         });
 
-                    var ctx = document.getElementById('myChart3').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: [{% for label in labels %} '{{label}}',{% endfor %}],
-                    datasets: [{
-                        label: 'Emotion',
-                        data: [{% for prob in probabilities_failures_text %} {{ prob }}, {% endfor %}],
-                          options: {
-                            plugins: {
-                              legend: {
-                                title: {
-                                  display: true,
-                                  text: 'Legend Title',
-                                }
-                              }
-                            }
-                          },
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                                borderWidth: 1
-                    }]
-                        },
-                    options: {
-                        plugins: {
-                            legend: {
-                                title: {
-                                    display: true,
-                                    text: 'Emotion Analysis when failures arise',
-                                }
-                            }
-                        },
-                        scales: {
-                            yAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'probability'
-                                 },
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'Emotion'
-                                 }
-                            }],
-                        }
-                    }
-                    });
+         var ctx = document.getElementById('myChart3').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [{% for label in labels %} '{{label}}',{% endfor %}],
+         datasets: [{
+             label: 'Emotion',
+             data: [{% for prob in probabilities_failures_text %} {{ prob }}, {% endfor %}],
+               options: {
+                 plugins: {
+                   legend: {
+                     title: {
+                       display: true,
+                       text: 'Legend Title',
+                     }
+                   }
+                 }
+               },
+             backgroundColor: [
+                 'rgba(255, 99, 132, 1)',
+                 'rgba(54, 162, 235, 1)',
+                 'rgba(255, 206, 86, 1)',
+                 'rgba(75, 192, 192, 1)',
+                 'rgba(153, 102, 255, 1)',
+                 'rgba(255, 159, 64, 1)'
+             ],
+                 borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
+                     'rgba(255, 159, 64, 1)'
+                 ],
+                     borderWidth: 1
+         }]
+             },
+         options: {
+             plugins: {
+                 legend: {
+                     title: {
+                         display: true,
+                         text: 'Emotion Analysis about family meet',
+                     }
+                 }
+             },
+             scales: {
+                 yAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'probability'
+                      },
+                     ticks: {
+                         beginAtZero: true
+                     }
+                 }],
+                 xAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'Emotion'
+                      }
+                 }],
+             }
+         }
+         });
 
-                    var ctx = document.getElementById('myChart4').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: [{% for label in labels %} '{{label}}',{% endfor %}],
-                    datasets: [{
-                        label: 'Emotion',
-                        data: [{% for prob in probabilities_life_experience_text %} {{ prob }}, {% endfor %}],
-                          options: {
-                            plugins: {
-                              legend: {
-                                title: {
-                                  display: true,
-                                  text: 'Legend Title',
-                                }
-                              }
-                            }
-                          },
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                                borderWidth: 1
-                    }]
-                        },
-                    options: {
-                        plugins: {
-                            legend: {
-                                title: {
-                                    display: true,
-                                    text: 'Emotion Analysis of life',
-                                }
-                            }
-                        },
-                        scales: {
-                            yAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'probability'
-                                 },
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'Emotion'
-                                 }
-                            }],
-                        }
-                    }
-                    });
+         var ctx = document.getElementById('myChart4').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [{% for label in labels %} '{{label}}',{% endfor %}],
+         datasets: [{
+             label: 'Emotion',
+             data: [{% for prob in probabilities_life_experience_text %} {{ prob }}, {% endfor %}],
+               options: {
+                 plugins: {
+                   legend: {
+                     title: {
+                       display: true,
+                       text: 'Legend Title',
+                     }
+                   }
+                 }
+               },
+             backgroundColor: [
+                 'rgba(255, 99, 132, 1)',
+                 'rgba(54, 162, 235, 1)',
+                 'rgba(255, 206, 86, 1)',
+                 'rgba(75, 192, 192, 1)',
+                 'rgba(153, 102, 255, 1)',
+                 'rgba(255, 159, 64, 1)'
+             ],
+                 borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
+                     'rgba(255, 159, 64, 1)'
+                 ],
+                     borderWidth: 1
+         }]
+             },
+         options: {
+             plugins: {
+                 legend: {
+                     title: {
+                         display: true,
+                         text: 'Emotion Analysis about feeling down in life',
+                     }
+                 }
+             },
+             scales: {
+                 yAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'probability'
+                      },
+                     ticks: {
+                         beginAtZero: true
+                     }
+                 }],
+                 xAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'Emotion'
+                      }
+                 }],
+             }
+         }
+         });
 
-                    var ctx = document.getElementById('myChart5').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['happy','sad'],
-                    datasets: [{
-                        label: 'Emotion',
-                        data: [{{happy}}, {{sad}}],
-                          options: {
-                            plugins: {
-                              legend: {
-                                title: {
-                                  display: true,
-                                  text: 'Legend Title',
-                                }
-                              }
-                            }
-                          },
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                                borderWidth: 1
-                    }]
-                        },
-                    options: {
-                        plugins: {
-                            legend: {
-                                title: {
-                                    display: true,
-                                    text: 'Emotion Analysis',
-                                }
-                            }
-                        },
-                        scales: {
-                            yAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'probability'
-                                 },
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxes: [{
-                               scaleLabel: {
-                                    display: true,
-                                    labelString: 'Emotion'
-                                 }
-                            }],
-                        }
-                    }
-                    });
-                </script>
-            </div>
-        </div>
-    </div>
+         var ctx = document.getElementById('myChart5').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: ['happy','sad'],
+         datasets: [{
+             label: 'Emotion',
+             data: [{{happy}}, {{sad}}],
+               options: {
+                 plugins: {
+                   legend: {
+                     title: {
+                       display: true,
+                       text: 'Legend Title',
+                     }
+                   }
+                 }
+               },
+             backgroundColor: [
+                 'rgba(255, 99, 132, 1)',
+                 'rgba(54, 162, 235, 1)',
+                 'rgba(255, 206, 86, 1)',
+                 'rgba(75, 192, 192, 1)',
+                 'rgba(153, 102, 255, 1)',
+                 'rgba(255, 159, 64, 1)'
+             ],
+                 borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
+                     'rgba(255, 159, 64, 1)'
+                 ],
+                     borderWidth: 1
+         }]
+             },
+         options: {
+             plugins: {
+                 legend: {
+                     title: {
+                         display: true,
+                         text: 'Emotion Analysis',
+                     }
+                 }
+             },
+             scales: {
+                 yAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'probability'
+                      },
+                     ticks: {
+                         beginAtZero: true
+                     }
+                 }],
+                 xAxes: [{
+                    scaleLabel: {
+                         display: true,
+                         labelString: 'Emotion'
+                      }
+                 }],
+             }
+         }
+         });
+     </script>
+ </div>
+</div>
+</div>
 </section>
 <!-- {% include 'js.html' %} -->
 {% endblock %}

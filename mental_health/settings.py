@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'channels',
     'pwa'
 ]
-
+CSRF_TRUSTED_ORIGINS = ['https://8000-dineshssdn8-mentalhealt-4yt6js1lnsr.ws-us60.gitpod.io']
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
