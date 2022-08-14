@@ -26,16 +26,16 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars"></span> Menu </button>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="{% url 'health:home' %}" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="{% url 'AboutUs:aboutus' %}" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="{% url 'predictor:show_emotion' %}" class="nav-link">Mental Health Score</a></li>
-					<li class="nav-item"><a href="{% url 'contact:contact' %}" class="nav-link">Contact</a></li>
+					<li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="{% url 'health:home' %}" class="nav-link">Home</a></li>
+					<li class="nav-item {% if request.resolver_match.url_name == 'aboutus' %}active{% endif %}"><a href="{% url 'AboutUs:aboutus' %}" class="nav-link">About</a></li>
+					<li class="nav-item {% if request.resolver_match.url_name == 'show_emotion'%}active{% endif %} {% if request.resolver_match.url_name == 'show_emotion_result'%}active{% endif %}"><a href="{% url 'predictor:show_emotion' %}" class="nav-link">Mental Health Score</a></li>
+					<li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact:contact' %}" class="nav-link">Contact</a></li>
 					{% if user.is_authenticated %}
 					<li class="nav-item"><a href="#" class="nav-link"><span>Welcome {{user.username}}</span></a></li>
-					<li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link">Logout</a></li>
+					<li class="nav-item "><a href="{% url 'users:logout' %}" class="nav-link">Logout</a></li>
 					{% else %}
-					<li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link">Login</a></li>
-					<li class="nav-item"><a href="{% url 'users:register' %}" class="nav-link">SignUp</a></li>
+					<li class="nav-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}"><a href="{% url 'users:login' %}" class="nav-link">Login</a></li>
+					<li class="nav-item {% if request.resolver_match.url_name == 'register' %}active{% endif %}"><a href="{% url 'users:register' %}" class="nav-link">SignUp</a></li>
 					{% endif %}
 				</ul>
 			</div>
@@ -97,7 +97,7 @@
 			</div>
 			<div class="row mt-5">
 				<div class="col-md-6 col-lg-4 text-md-right">
-
+					{{request.resolver_match.url_name}}
 				</div>
 				<div class="col-md-6 col-lg-4 text-md-right">
 					<p class="mb-0 list-unstyled"> <a class="mr-md-3" href="#">Terms</a> <a class="mr-md-3" href="#">Privacy</a> <a class="mr-md-3" href="#">Compliances</a> </p>

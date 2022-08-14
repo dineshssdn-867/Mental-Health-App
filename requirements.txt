@@ -1,7 +1,7 @@
 asgiref==3.5.2
 autobahn==22.7.1
 Automat==20.2.0
-backports.zoneinfo==0.2.1
+backports.zoneinfo;python_version<"3.9"
 blis==0.7.8
 catalogue==2.0.8
 channels==3.0.5

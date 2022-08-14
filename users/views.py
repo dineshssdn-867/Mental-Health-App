@@ -13,7 +13,7 @@ from typing import Any, AnyStr, Dict  # Using to define the type
 from decouple import config
 
 firebaseConfig = {
-    'apiKey':  config('api_key'),
+    'apiKey':  config('apiKey'),
     'authDomain':  config('authDomain'),
     "databaseURL":  config('databaseURL'),
     'projectId': config('projectId'),

@@ -108,10 +108,10 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3hutuuv7dpaot',
-        'USER': 'lpsmqscngqggzj',
-        'PASSWORD': '4c0507e6a027c7d590fa393300e0ca601482675b4f40e838e52c1fa308b84103',
-        'HOST': 'ec2-44-195-100-240.compute-1.amazonaws.com',
+        'NAME': 'dbqe5vlnlbfm9r',
+        'USER': 'vqfymdqvkjrsma',
+        'PASSWORD': '9e70db3a2379d6ddcedcc62632b914866816424296583594dc0fe9c993e9e5a4',
+        'HOST': 'ec2-44-206-197-71.compute-1.amazonaws.com',
         'PORT': '5432',
     },
     'contact':  {
@@ -119,7 +119,6 @@ DATABASES = {
        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
    },
 }
-
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',

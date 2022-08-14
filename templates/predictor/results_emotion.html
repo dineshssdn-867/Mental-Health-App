@@ -1,26 +1,16 @@
-{% extends 'base.html' %}
-{% load static %}
-
-
-{% block content %}
-{% include 'css.html' %}
-<main>
-        <!-- Hero Area Start-->
-        <div class="slider-area ">
-            <div class="single-slider slider-height2 d-flex align-items-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="hero-cap text-center">
-                                <h2>Results</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="container">
+{% extends 'base.html' %}{% load static %} {% block content %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('https://www.narayanahealth.org/blog/wp-content/uploads/2020/04/shutterstock_727024909-1-1170x944.jpg'); background-position: center;" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-end">
+			<div class="col-md-9 ftco-animate pb-5">
+				<p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'health:home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Mental Health Results<i class="ion-ios-arrow-forward"></i></span></p>
+				<h1 class="mb-0 bread">Know Your Mental Health Results</h1> </div>
+		</div>
+	</div>
+</section>
+<br><br><br>
+<section class="ftco-section">        <div class="container">
                <div class="row">
                    <div class="col-sm-12 col-md-6">
                          <div class="text-center">
@@ -60,7 +50,7 @@
                              <br>
                              <h4>{{message}}</h4>
                              {% if flag %}
-                             <a href="https://www.google.com/maps/search/Psychiatrist+near+me/" class="btn_3">Find Psychiatrist</a>
+                             <a href="https://www.google.com/maps/search/Psychiatrist+near+me/" class="btn btn-primary">Find Psychiatrist</a>
                              {% endif %}
                          </div>
                     </div>
@@ -69,7 +59,7 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js"></script>
             <div class="col-md-6 my-4">
-        <div class="bg-white">
+        <div class="">
             <div class="card-body">
                 <script>
                     var ctx = document.getElementById('myChart1').getContext('2d');
@@ -405,6 +395,6 @@
             </div>
         </div>
     </div>
- </main>
-{% include 'js.html' %}
+</section>
+<!-- {% include 'js.html' %} -->
 {% endblock %}
