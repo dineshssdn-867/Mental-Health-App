@@ -1,0 +1,127 @@
+{% extends 'base.html' %}{% load static %} {% block content %}
+<div class="hero-wrap js-fullheight">
+	<div class="home-slider owl-carousel js-fullheight">
+		<div class="slider-item js-fullheight" style="background-image:url('https://www.battelle.org/images/default-source/default-album/gettyimages-994777970.jpg?sfvrsn=6baa790_0');">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center">
+					<div class="col-md-7 ftco-animate">
+						<div class="text w-100">
+							<h2 class="text-primary">Welcome to Mental Health Coach</h2>
+							<h1 class="mb-4 text-white">Get the guidance, live a happy life</h1>
+							<p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slider-item js-fullheight" style="background-image:url('https://media-cldnry.s-nbcnews.com/image/upload/t_fit-2000w,f_auto,q_auto:best/newscms/2017_15/1336291/151211-brain-intelligence-mn-1045-1336291.jpg');">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center">
+					<div class="col-md-7 ftco-animate">
+						<div class="text w-100">
+							<h2>A Fresh approach to happy life</h2>
+							<h1 class="mb-4 color-white">Happy life teachers</h1>
+							<p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slider-item js-fullheight" style="background-image:url('https://www.narayanahealth.org/blog/wp-content/uploads/2020/04/shutterstock_727024909-1-1170x944.jpg');">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center justify-content-end">
+					<div class="col-md-6 ftco-animate">
+						<div class="text w-100">
+							<h2>Welcome to Mental Health Coach</h2>
+							<h1 class="mb-4 color-white">You can transform mental health through habit change</h1>
+							<p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="ftco-section ftco-services">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+					<div class="d-block services-wrap text-center">
+						<div class="img" style="background-image: url('https://img.etimg.com/thumb/msid-69307577,width-650,imgsize-519119,,resizemode-4,quality-100/robot-ai-doctor_gettyimages.jpg');"></div>
+						<div class="media-body p-2 mt-3">
+							<h3 class="heading">Dr. Bot</h3>
+							<p>Dr bot is AI powered chatbot with which you can talk about mental health issues.</p>
+							<p><input id="room-name-submit" class="btn btn-primary btn-outline-primary" type="button" value="Start the chat"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+					<div class="d-block services-wrap text-center">
+						<div class="img" style="background-image: url('https://miro.medium.com/max/1400/1*KHvPkJiIkFm_edIUy8xfqg.jpeg');"></div>
+						<div class="media-body p-2 mt-3">
+							<h3 class="heading">Mental Health Checker</h3>
+							<p>From different situations we will help you know whether you are depressed or not.</p>
+							<p><a href="{% url 'predictor:show_emotion' %}" class="btn btn-primary btn-outline-primary">Check Your health</a></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+					<div class="d-block services-wrap text-center">
+						<div class="img" style="background-image: url('https://scontent.fhyd2-2.fna.fbcdn.net/v/t1.6435-9/107663756_107530844365768_8135490998308221552_n.png?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g1-VVmzQZSAAX9rDWmt&_nc_ht=scontent.fhyd2-2.fna&oh=00_AT_WZ5_irMpY2r5mo0PxXqm3kWFTtAixxjKjgKmPM2GUSg&oe=62C0D3BC');"></div>
+						<div class="media-body p-2 mt-3">
+							<h3 class="heading">Zian Spirituality Program</h3>
+							<p>At Zian, we come together to find our soul connections. Let us take a minute away from our hectic lives to seek the spirituality & joy within. Let us learn to be present in the moment!</p>
+							<p><a href="https://www.instagram.com/zian.life/" class="btn btn-primary btn-outline-primary">Read more</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<section class="ftco-section ftco-no-pt ftco-no-pb bg-light">
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-md-5 p-md-5 img img-2 mt-5 mt-md-0" style="background-image: url('https://miro.medium.com/max/2000/1*htnBLmhcv6_j054PeheClA.jpeg');"> </div>
+			<div class="col-md-7 wrap-about py-4 py-md-5 ftco-animate">
+				<div class="heading-section mb-5">
+					<div class="pl-md-5"> <span class="subheading mb-2">Welcome to Mental Healthcare</span>
+						<h2 class="mb-2">Hello! Mental Health Care is a natural way of improving your mental health</h2> </div>
+				</div>
+				<div class="pl-md-5">
+					<p>Talking about mental illness can be hard. There is a stigma that surrounds mental health and mental illness. It can prevent people from getting the support and help they need. But mental illness is a common problem. In fact, about 1 in 5 people will experience some sort of mental illness in their lifetime. So, don’t be afraid to reach out for help. Our AI bot is a good place to start.</p>
+					<p>You might not feel comfortable talking to your doctor about any mental or emotional problems you are having. If that is the case our AI bot can help you.</p>
+					<div class="founder d-flex align-items-center mt-5">
+						<div class="img" style="background-image: url('https://miro.medium.com/max/2000/1*htnBLmhcv6_j054PeheClA.jpeg');"></div>
+						<div class="text pl-3">
+							<h3 class="mb-0">Dr. Bot</h3> <span class="position">Personal Psychiatrist</span> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="ftco-section testimony-section bg-light">
+</section>
+    <script>
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            //var roomName = document.querySelector('#room-name-input').value;
+            var roomName = create_UUID();
+            window.location.pathname = 'chatbot'+ '/chat/' + roomName + '/';
+        };
+
+// to generate random url-----------------------------------------------------------------------------------------------
+        function create_UUID(){
+        var dt = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+        });
+        return uuid;
+        }
+    </script>
+
+{% endblock %}

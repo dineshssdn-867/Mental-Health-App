@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mental Health Coach</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="http://newhopeforthebrain.com/wp-content/uploads/2019/01/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="This is a mental health app which is AI chatbot">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"> </head>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://use.typekit.net/hoy3lrg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/chatui.css' %}" />
+</head>
+<body>
+    <div id="frame">
+        <div class="content">
+			<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+				<div class="container"> <a class="navbar-brand" href="{% url 'health:home' %}">Mental Health <span>coach<i class="fa fa-leaf"></i></span></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars"></span> Menu </button>
+					<div class="collapse navbar-collapse" id="ftco-nav">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active"><a href="{% url 'health:home' %}" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="{% url 'AboutUs:aboutus' %}" class="nav-link">About</a></li>
+							<li class="nav-item"><a href="{% url 'chatbot:bot' %}" class="nav-link">Coach</a></li>
+							<li class="nav-item"><a href="{% url 'predictor:show_emotion' %}" class="nav-link">Mental Health Score</a></li>
+							<li class="nav-item"><a href="{% url 'contact:contact' %}" class="nav-link">Contact</a></li>
+							{% if user.is_authenticated %}
+							<li class="nav-item"><a href="#" class="nav-link"><span>Welcome {{user.username}}</span></a></li>
+							<li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link">Logout</a></li>
+							{% else %}
+							<li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link">Login</a></li>
+							<li class="nav-item"><a href="{% url 'users:register' %}" class="nav-link">SignUp</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</nav>
+            <div class="contact-profile">
+                <img src="{% static 'assets/chatbot_icon.jpg' %}" alt="" />
+                <p>DR BOT</p>
+
+            </div>
+            <div class="messages">
+                <ul id="chat-log">
+
+                    <li class="sent" >
+                        <img src="{% static 'assets/chatbot_icon.jpg' %}" alt="" />
+                        <p>Hi!! I am Q&A Dr. Bot</p><br>
+
+                    </li>
+                    <li class="replies">
+
+                    </li>
+
+                 </ul>
+            </div>
+          <div class="message-input">
+
+              <input type="text" id="chat-message-input" placeholder="Type your question here...." />
+
+              <button class="submit" id="chat-message-submit" ><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+
+          </div>
+      </div>
+    </div>
+
+  {{ room_name|json_script:"room-name" }}
+
+  <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        var flag = 0;
+        var satisfiedflag = 0;
+        var user = "User";
+
+        const chatSocket = new WebSocket(
+            'wss://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            flag = data.flag;
+            var ans=data.answer;
+            console.log(ans);
+            console.log(data);
+            var q_asked=data.q;
+            console.log(q_asked);
+            var ans_id=data.ans_id;
+
+            if(flag == 2)
+            {
+                ans = "What's your good name?";
+                flag = 0;
+            }
+            else if(flag == 0)
+            {
+                flag = 1;
+                ans = "Hello " + ans +" !!  How can i help you??"
+            }
+
+            if(ans != ' ' && ans != '\n' && ans.length != 0 )
+                $('<li class="sent"><img src="{% static "assets/chatbot_icon.jpg" %}" alt="" /><p>' + ans + ' </p>\
+                    <br><button name="'+ans_id+'" onclick="myFunction1(this.name)"> </button>\
+                    <button name="'+ans_id+","+q_asked+'" onclick="myFunction2(this.name)"> </button></li>').appendTo($('.messages ul'));
+
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        var input = document.getElementById("chat-message-input");
+          input.addEventListener("keyup", function(event) {
+          if (event.keyCode === 13) {
+              event.preventDefault();
+              document.getElementById("chat-message-submit").click();
+             }
+          });
+
+
+       $('.submit').click(function(e){
+        message = $(".message-input input").val();
+        if(message != '\n' && message.length != 0)
+            {
+                $('<li class="replies"><img src="{% static "assets/human_icon.png" %}" alt="" /><p> '+message+' </p></li>').appendTo($('.messages ul'));
+            }
+
+
+
+            if(message.length != 0)
+            {
+                chatSocket.send(JSON.stringify({
+                'message': message,
+                'flag' : flag
+                }));
+            }
+
+            $('.message-input input').val(null);
+            $('.contact.active .preview').html('<span>You: </span>' + message);
+            $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+       });
+  </script>
+</body>
+</html>
